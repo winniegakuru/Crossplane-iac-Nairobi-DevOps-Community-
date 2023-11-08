@@ -1,0 +1,18 @@
+apiVersion: efs.aws.upbound.io/v1beta1
+kind: MountTarget
+metadata:
+  annotations:
+    meta.upbound.io/example-id: efs/v1beta1/mounttarget
+  name: nairobi-devops-demo-mt
+spec:
+  forProvider:
+    fileSystemIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: efs
+    region: us-west-1
+    securityGroupsSelector:
+      matchLabels:
+        testing.upbound.io/example-name: efs
+    subnetIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: efs

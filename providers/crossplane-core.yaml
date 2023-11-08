@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: crossplane-system
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: crossplane-repository
+  namespace: crossplane-system
+spec:
+  interval: 5m
+  url: https://charts.crossplane.io/stable
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: crossplane-core
+  namespace: flux-system
+spec:
+  releaseName: crossplane-core
+  interval: 5m
+  chart:
+    spec:
+      chart: crossplane
+      version: '1.10.1'
+      sourceRef:
+        kind: HelmRepository
+        name: crossplane-repository
+        namespace: crossplane-system
+      interval: 1m

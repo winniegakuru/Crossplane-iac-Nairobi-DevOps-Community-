@@ -1,0 +1,11 @@
+apiVersion: efs.aws.upbound.io/v1beta1
+kind: AccessPoint
+metadata:
+  labels:
+    testing.upbound.io/example-name: demo
+  name: nairobi-devops-demo-ap
+spec:
+  forProvider:
+    fileSystemIdRef:
+      name: nairobi-devops-demo-fs
+    region: us-west-1
