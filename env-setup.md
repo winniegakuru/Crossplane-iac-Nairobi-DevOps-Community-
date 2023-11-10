@@ -27,7 +27,7 @@ echo   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/doc
 sudo apt-get update
 sudo docker run hello-world
 ```
-
+`sudo usermod -aG docker $USER && newgrp docker`
 `minikube start --force`
 
 ### Install kubectl
