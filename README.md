@@ -1,15 +1,15 @@
-# Crossplane-iac-Nairobi-DevOps-Community-
+# Crossplane-iac-Nairobi-DevOps-Community
 
 A simple demo on Using crossplane to create infrastructure for the Nairobi DevOps Community
 
 # Prereliquisites
 
-[-] A Kubernetes cluster with at least 2 GB of RAM (Consider Minikube/Kind)
-[-] Permissions to create pods and secrets in the Kubernetes cluster
-[-] Helm version v3.2.0 or later
-[-] Aws Account with Permission to create the necessary resources (efs, s3 and any other)
-[-] GCP Account with Permission to create the necessary resources (Storage)
-[-] Authentication keys for both EKS and GCP
+- A Kubernetes cluster with at least 2 GB of RAM (Consider Minikube/Kind)
+- Permissions to create pods and secrets in the Kubernetes cluster
+- Helm version v3.2.0 or later
+- Aws Account with Permission to create the necessary resources (efs, s3 and any other)
+- GCP Account with Permission to create the necessary resources (Storage)
+- Authentication keys for both EKS and GCP
 
 ## Quick Setup
 
@@ -201,7 +201,13 @@ spec:
 
 # Refs:
 
-[-] https://docs.crossplane.io/latest/getting-started/provider-gcp/#create-a-kubernetes-secret-with-the-gcp-credentials
-[-] https://docs.crossplane.io/latest/getting-started/provider-aws/
-[-] https://marketplace.upbound.io/providers
-[-]
+- https://docs.crossplane.io/latest/getting-started/provider-gcp/#create-a-kubernetes-secret-with-the-gcp-credentials
+- https://docs.crossplane.io/latest/getting-started/provider-aws/
+- https://marketplace.upbound.io/providers
+
+Next Steps
+
+- Use Crossplane Compositions and XRDs to provision resources
+- User Packages and Configurations to bundle together related resources
+- Build a pipeline to create a OCI packaged and push to the registry
+- Use the OCI packages and provision the resource through Crospplane Claim
