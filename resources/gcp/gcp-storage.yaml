@@ -1,0 +1,11 @@
+apiVersion: storage.gcp.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  annotations:
+    meta.upbound.io/example-id: storage/v1beta1/notification
+  labels:
+    testing.upbound.io/example-name: bucket
+  name: bucket-demo-devops-nairobi-05
+spec:
+  forProvider:
+    location: US
