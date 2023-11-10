@@ -126,3 +126,54 @@ NB:
 This is just the basic use/learning demo purposes. For production setup, there will be need to consider things `Compositions` `definitions` `Packages` and `Configurations`
 
 ## GCP
+
+#### Create a Kubernetes secret for GCP
+
+The provider requires credentials to create and manage GCP resources. Providers use a Kubernetes Secret to connect the credentials to the provider.
+
+First generate a Kubernetes Secret from a Google Cloud service account JSON file and then configure the Provider to use it.
+
+##### Create a Kubernetes secret with the GCP credentials
+
+```
+kubectl create secret \
+generic gcp-secret \
+-n crossplane-system \
+--from-file=creds=./gcp-credentials.json
+```
+
+> Verify: `kubectl describe secret gcp-secret -n crossplane-system`
+
+#### Install Gcp Storage Provider
+
+```
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-gcp-storage
+spec:
+  package: xpkg.upbound.io/upbound/provider-gcp-storage:v0.35.0
+```
+
+#### Create a ProviderConfig:
+
+```
+apiVersion: gcp.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  projectID: abiding-truth-404513
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: gcp-secret
+      key: creds
+EOF
+```
+
+#### Create a managed resource
+
+Create the Bucket with the following command:
+``
