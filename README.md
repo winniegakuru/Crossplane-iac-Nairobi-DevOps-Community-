@@ -42,7 +42,7 @@ crossplane-stable/crossplane \
 --create-namespace
 ```
 
-> Verify: `kubectl get pods` and `kubectl api-resources | grep crossplane.`
+> Verify: `kubectl get pods -n crossplane-system` and `kubectl api-resources | grep crossplane`
 
 ##### Install AWS provider(EFS)
 
@@ -155,6 +155,9 @@ spec:
   package: xpkg.upbound.io/upbound/provider-gcp-storage:v0.35.0
 ```
 
+or
+`kubectl apply -f ./resources/gcp/gcp-storage-provider.yaml`
+
 #### Create a ProviderConfig:
 
 ```
@@ -170,10 +173,35 @@ spec:
       namespace: crossplane-system
       name: gcp-secret
       key: creds
-EOF
 ```
+
+or
+`kubectl apply -f ./resources/gcp/gcp-provider-config.yaml`
 
 #### Create a managed resource
 
 Create the Bucket with the following command:
-``
+`kubectl apply -f ./resources/gcp/gcp-storage.yaml`
+
+or
+
+```
+apiVersion: storage.gcp.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  annotations:
+    meta.upbound.io/example-id: storage/v1beta1/notification
+  labels:
+    testing.upbound.io/example-name: bucket
+  name: bucket-demo-devops-nairobi-05
+spec:
+  forProvider:
+    location: US
+```
+
+# Refs:
+
+[-] https://docs.crossplane.io/latest/getting-started/provider-gcp/#create-a-kubernetes-secret-with-the-gcp-credentials
+[-] https://docs.crossplane.io/latest/getting-started/provider-aws/
+[-] https://marketplace.upbound.io/providers
+[-]
