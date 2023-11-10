@@ -19,7 +19,7 @@ A simple demo on Using crossplane to create infrastructure for the Nairobi DevOp
 
 ```
 helm repo add \
-crossplane-stable https://charts.crossplane.io/stable
+crossplane-stable https://charts.crossplane.io/stable \
 helm repo update
 ```
 
@@ -82,7 +82,7 @@ generic aws-secret \
 
 A ProviderConfig customizes the settings of the AWS Provider.
 
-Apply the ProviderConfig with the this Kubernetes configuration file:
+Apply the ProviderConfig with this Kubernetes configuration file:
 
 ```
 cat <<EOF | kubectl apply -f -
@@ -131,7 +131,7 @@ This is just the basic use/learning demo purposes. For production setup, there w
 
 The provider requires credentials to create and manage GCP resources. Providers use a Kubernetes Secret to connect the credentials to the provider.
 
-First generate a Kubernetes Secret from a Google Cloud service account JSON file and then configure the Provider to use it.
+First, generate a Kubernetes Secret from a Google Cloud service account JSON file and then configure the Provider to use it.
 
 ##### Create a Kubernetes secret with the GCP credentials
 
@@ -205,7 +205,7 @@ spec:
 - https://docs.crossplane.io/latest/getting-started/provider-aws/
 - https://marketplace.upbound.io/providers
 
-Next Steps
+# Next Steps
 
 - Use Crossplane Compositions and XRDs to provision resources
 - User Packages and Configurations to bundle together related resources
