@@ -2,7 +2,7 @@
 
 A simple demo on Using crossplane to create infrastructure for the Nairobi DevOps Community
 
-# Prereliquisites
+# Prerequisites
 
 - A Kubernetes cluster with at least 2 GB of RAM (Consider Minikube/Kind)
 - Permissions to create pods and secrets in the Kubernetes cluster
