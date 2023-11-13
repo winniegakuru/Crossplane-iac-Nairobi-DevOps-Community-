@@ -206,8 +206,7 @@ spec:
 - https://marketplace.upbound.io/providers
 
 # Next Steps
-
 - Use Crossplane Compositions and XRDs to provision resources
 - User Packages and Configurations to bundle together related resources
-- Build a pipeline to create a OCI packaged and push to the registry
+- Build a pipeline to create an OCI packaged and push it to the registry
 - Use the OCI packages and provision the resource through Crospplane Claim
